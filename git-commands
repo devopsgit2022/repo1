@@ -2,7 +2,7 @@ SCM	source code management
 VCS	version control system
 SCM and VCS both are same
 
-Git: userid(devopsgit2022/Gmail@202)
+Git: userid()
 ====
 Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 
@@ -11,8 +11,8 @@ Path: C:\Program Files\Git
 git init -> git repository initialize, .git file will be created (cretaed configuration files)
 git-init - Create an empty Git repository or reinitialize an existing one
 "author"
-git config --global user.name "Chiranjeevi Kunchala"
-git config --global user.email "chiranjeevi.kunchala2022@gmail.com"
+git config --global user.name "abc"
+git config --global user.email "abc@gmail.com"
 git config --list 	We can check author details are configured or not
 git config --global --unset  To remove user.name/user.email	from cofig file
 --unset-all
