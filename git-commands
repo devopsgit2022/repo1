@@ -1,0 +1,69 @@
+SCM	source code management
+VCS	version control system
+SCM and VCS both are same
+
+Git: userid(devopsgit2022/Gmail@202)
+====
+Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+
+Path: C:\Program Files\Git
+
+git init -> git repository initialize, .git file will be created (cretaed configuration files)
+git-init - Create an empty Git repository or reinitialize an existing one
+"author"
+git config --global user.name "Chiranjeevi Kunchala"
+git config --global user.email "chiranjeevi.kunchala2022@gmail.com"
+git config --list 	We can check author details are configured or not
+git config --global --unset  To remove user.name/user.email	from cofig file
+--unset-all
+Remove all lines matching the key from config file
+Note:	We can not create multiple users in git
+Note:	If incase user name or user email has mentioned wrong then we can use same config command then you can rename user.name/email
+
+"git stages" local machine having default three phases 
+1). workspace				
+new file or existing file to be modified then this place called workspace area, (color indication:red), untracked files.
+2). Staging/Index area
+It's called as an intermediate area, this stage have some details like (author details, date and time, commits, labes), (color indication:green)  		
+3). Local repository
+read to push files into central repository
+
+ls ->	ls is used to 'list' contents of the current working directory
+touch -> The touch command is the easiest way to create new, empty files.
+git add (filename) ->	adding files from workspace to staging/index area
+git commit -m (label message/commit name) file name ->	staging/index are to local repository
+git log ->	Shows the commit logs/ files will not shown. 
+git show commit_id -> you can use the git show command to display the changes for that single commit
+git push ->	The git push command is used to upload local repository content to a remote repository
+
+touch file2 file3 file4
+git add file2 file3 file4
+git add -A (or) git add * (or) git add .
+git commit -m "label message" -> if it's single file to be commiting then we should file name along/if your commiting more files then no needs to add files names
+git log
+Note: new files can not be copy to local repository, only modified files we can copy.
+git commit -m "label message" file1
+touch file6
+git reset HEAD "filename" ->	your file move back from staging/index are to workspace area
+eg:  git reset HEAD file6
+git reset --soft commit_id	->	your file move back from local repository are to staging/index area
+Note: (n-1) formula, if you want move file from local repository to staging/index area, then ensure we suppose to use head/after commit, not head-master.
+if incase you can use HEAD->master commit id, it's does not working
+git reset --mixed commit_id
+Note: if we use above command to move the file from local repository to workspace but it reset your file contents which have at staging/index area
+git reset --hard commit_id -> it's remove your file (dont use/not recommended)
+
+public and private repo's:
+public:Anyone on the internet can see this repository. You choose who can commit.
+private:You choose who can see and commit to this repository.
+Public repositories are accessible to everyone on the internet while Private repositories are only accessible to you,
+and people you explicitly share access with. even internal for Github enterprise account usually for an organization
+Add a README file
+This is where you can write a long description for your project
+Add .gitignore
+Choose which files not to track from a list of templates.
+Choose a license
+A license tells others what they can and can't do with your code.
+
+clone:
+git
