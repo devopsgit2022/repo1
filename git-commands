@@ -67,3 +67,9 @@ A license tells others what they can and can't do with your code.
 
 clone:
 git
+directory creation"
+mkdir "directory-name/file name"
+rm -rf "file-name"
+
+
+
