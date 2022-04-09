@@ -71,5 +71,36 @@ directory creation"
 mkdir "directory-name/file name"
 rm -rf "file-name"
 
+copy of data
+git branch -> it shows list of branchs
+git branch branch-name -> create new branch
+git checkout branch-name -> switch branch
+git checkout master
+git merge master/release1/release2
+touch: The touch command is a standard command used in UNIX/Linux operating system which is used to create, change and modify timestamps of a file.
+touch file-name
+touch f1 f2 f3
+cat: The cat command is a utility command in Linux. One of its most commonly known usages is to print the content of a file onto the standard output stream
+cat > file1
+ctl+d -> save the data
+cat file-name -> show file data
+cat >> file1 -> if you add additional data
+vi: The default editor that comes with the UNIX operating system is called vi (visual editor). Using vi editor,
+we can edit an existing file or create a new file from scratch. we can also use this editor to just read a text file.
+Note: always prefer to create branches from master
+git push -u origin <branch>
+git push (repo path) <branch>
+git branch -d branch-name -> delete branch (local)
+git push origin -d branch-name -> delete branch (git hub)
+git remote add origin https://github.com/devopsgit2022/repo1.git
+git push -u origin master 
 
+Git-7 (Video):(Explained about paticular commit from one branch to other branch)
+==================================================================
+git branch branch-name
+(or)
+git checkout branch-name
+git checkout -b branch-name
+git cheery-pick "commit-id"
+git pull origin release1
 
