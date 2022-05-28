@@ -2,7 +2,9 @@ SCM	source code management
 VCS	version control system
 SCM and VCS both are same
 
-Git: userid()
+Git-1 (Video):(what is SCM, SCM uses, how to setup in local, user details config, file phases in local repository)
+=================================================================================================================
+Git: userid(devopsgit2022/Gmail@202)
 ====
 Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 
@@ -11,22 +13,24 @@ Path: C:\Program Files\Git
 git init -> git repository initialize, .git file will be created (cretaed configuration files)
 git-init - Create an empty Git repository or reinitialize an existing one
 "author"
-git config --global user.name "abc"
-git config --global user.email "abc@gmail.com"
+git config --global user.name "Chiranjeevi Kunchala"
+git config --global user.email "chiranjeevi.kunchala2022@gmail.com"
 git config --list 	We can check author details are configured or not
-git config --global --unset  To remove user.name/user.email	from cofig file
+git config --global --unset  To remove user.name/user.email from cofig file
 --unset-all
 Remove all lines matching the key from config file
 Note:	We can not create multiple users in git
 Note:	If incase user name or user email has mentioned wrong then we can use same config command then you can rename user.name/email
 
+Git-2 (Video):(expalined about workplace area, staging/index, local repo files identifying, move files back/move in stages)
+===========================================================================================================================
 "git stages" local machine having default three phases 
 1). workspace				
 new file or existing file to be modified then this place called workspace area, (color indication:red), untracked files.
 2). Staging/Index area
 It's called as an intermediate area, this stage have some details like (author details, date and time, commits, labes), (color indication:green)  		
 3). Local repository
-read to push files into central repository
+ready to push files from local repo to central repository
 
 ls ->	ls is used to 'list' contents of the current working directory
 touch -> The touch command is the easiest way to create new, empty files.
@@ -36,6 +40,9 @@ git log ->	Shows the commit logs/ files will not shown.
 git show commit_id -> you can use the git show command to display the changes for that single commit
 git push ->	The git push command is used to upload local repository content to a remote repository
 
+
+Git-3 (Video):(expalined about files commits, logs)
+==================================================================
 touch file2 file3 file4
 git add file2 file3 file4
 git add -A (or) git add * (or) git add .
@@ -53,6 +60,8 @@ git reset --mixed commit_id
 Note: if we use above command to move the file from local repository to workspace but it reset your file contents which have at staging/index area
 git reset --hard commit_id -> it's remove your file (dont use/not recommended)
 
+Git-4 (Video):(repo create in github, files/dir push, practise)
+==================================================================
 public and private repo's:
 public:Anyone on the internet can see this repository. You choose who can commit.
 private:You choose who can see and commit to this repository.
@@ -66,11 +75,37 @@ Choose a license
 A license tells others what they can and can't do with your code.
 
 clone:
+git clone "path of central repository" (eg:https://github.com/devopsgit2022/repo1.git)
+ls
+clone:
 git
 directory creation"
 mkdir "directory-name/file name"
 rm -rf "file-name"
+Permission levels for a user account repository
+A repository owned by a user account has two permission levels: the repository owner and collaborators.
 
+Git-5 (Video):(log/commits tacking/finding between dates or based on author name)
+=================================================================
+get pull --rebase
+git logs check:
+git log --oneline  -> shows commit log in very short
+git log -n (2/3/5)-> this commad show in recent 2/3/5 logs/commits
+git log --oneline -n (2/3/4)
+git log --author=name -> it shows respect author related logs/commits
+git log --author=name -n 
+git log --author=name --oneline
+git log --author=name --oneline -n
+git log --since=dd-mm-yy (or) git log --after="yy-mm-dd"
+git log --until=dd-mm-yy (or) git log --before="yy-mm-dd"
+git log --since=dd-mm-yy --until=dd-mm-yy (or) git log --after="yy-mm-dd" --before="yy-mm-dd"
+git log --after="yy-mm-dd hh:mm" --before="yy-mm-dd hh:mm"
+git log --grep="commit name"
+git log -- filename
+
+Git-6 (Video):(Explained about Branching)
+==================================================================
+Branch:
 copy of data
 git branch -> it shows list of branchs
 git branch branch-name -> create new branch
@@ -95,12 +130,145 @@ git push origin -d branch-name -> delete branch (git hub)
 git remote add origin https://github.com/devopsgit2022/repo1.git
 git push -u origin master 
 
-Git-7 (Video):(Explained about paticular commit from one branch to other branch)
-==================================================================
+Git-7 (Video):(Explained about paticular commit from one branch to other branch), copy code main to release1 and release1 to main (local to central repo)
+merge conflict in git
+=========================================================================================================================================================
 git branch branch-name
 (or)
 git checkout branch-name
 git checkout -b branch-name
 git cheery-pick "commit-id"
 git pull origin release1
+
+merge conflict in git
+1). abort -> git merge --abort
+2). manual
+ 
+Git-8 (Video): Explained about STASH memory
+======================================================================================================================================
+Note: Stash memory available in local memory, but it's not there in central repository
+Stash memory is temporary memory which store in local
+git stash list -> show list of stash if created
+git stash save "label name" -> create stash
+git stash list
+git stash show -p stash@{stashname} 
+Eg: git stash show -p stash@{0}
+pop	(move or cut/paste)	->	pull back data from stash
+git stash pop
+git stash pop "stash@{n}" <- paticular stash
+
+apply (copy, but data still there in stash)->
+git stash apply
+git stash apply "stash@{n}" <- paticular stash
+	
+drop (delete)->
+git stash drop
+git stash drop "stash@{n}" <- paticular stash
+
+Alias:
+git config --global alias.l "log" 
+git log -> git l
+
+git config --global alias.status "s"
+git status -> git same
+
+git config --global alias.sl "stash list"
+git sl
+
+git log --oneline
+git config --global alias.l1 "log --oneline"
+
+Git-9 (Video): Explained about Tag concept (tag uses to mark the release point)
+======================================================================================================================================
+git tag -> checking is there any tags
+git tag name -> create new tag
+git tag -d tagname -> to delete tag (in local)
+git tag tag-name commit id -> will tag create at paticular commit
+git tag tag-name -> if your not give any commit id then tag will create on lastest commit
+git push origin tag-name -> to push tags/releases into central repository
+git push origin --tags > to push all tags/releases into central repository
+git push origin -d tag-name -> to delete tag (in central repo)
+git push origin -d tag-name tag-name
+
+AMEND: uses for last commit label msg change, even you can files into existing commit
+Eg: git commit --amed -m "label msg"
+IGNORE:
+.gitignore
+vi .gitignore
+merge conflict explained
+
+
+Git-10 (Video): Explained about merge and rebase)
+===================================================================================================================================
+Note: rebase is will not add extra commit
+
+after branch create new file created
+touch file1 file2
+git status
+git add .
+git commit -m "file1& file2"
+git branch master1
+touch file3
+git add .
+git commit -m "file3 added"
+git checkout master1
+touch file4
+git add .
+git commit -m "file4 added"
+==========================Example=====================================
+$ git log
+commit 9744bbb5c0d5ae045476ec2e290b217c128d6549 (HEAD -> master1)
+Merge: acb5e70 a50b911
+Author: Chiranjeevi Kunchala <chiranjeevi.kunchala2022@gmail.com>
+Date:   Sun Apr 17 06:54:02 2022 +0530
+
+    Merge branch 'master' into master1
+
+commit acb5e70537a1e87a1d51dc3012428f4f1f0886c9
+Author: Chiranjeevi Kunchala <chiranjeevi.kunchala2022@gmail.com>
+Date:   Sun Apr 17 06:51:11 2022 +0530
+
+    file4 added
+
+commit a50b911ef89d525796252132b748968ed9596b4e (master)
+Author: Chiranjeevi Kunchala <chiranjeevi.kunchala2022@gmail.com>
+Date:   Sun Apr 17 06:49:56 2022 +0530
+
+    file3 added
+
+commit 11c81407d934d357de75dbc55ff9cb50bf7abd67
+Author: Chiranjeevi Kunchala <chiranjeevi.kunchala2022@gmail.com>
+Date:   Sun Apr 17 06:48:35 2022 +0530
+
+    file1& file2
+
+chiranjeevi@DESKTOP-D31JGE6 MINGW64 /d/Batch-54/git (master1)
+$ git show 9744bbb5c0d5ae045476ec2e290b217c128d6549
+commit 9744bbb5c0d5ae045476ec2e290b217c128d6549 (HEAD -> master1)
+Merge: acb5e70 a50b911
+Author: Chiranjeevi Kunchala <chiranjeevi.kunchala2022@gmail.com>
+Date:   Sun Apr 17 06:54:02 2022 +0530
+
+    Merge branch 'master' into master1
+=====================================================================
+git rebase master
+git pull --rebase
+
+remote master -> central repository
+origin master -> (it's present in local) once of the remote branch (git branch -r /-a)
+local master -> local machine
+
+git pull = git fetch + merge
+
+git fetch
+git branch -r
+git branch -a
+git merge origin/main
+
+
+
+
+
+
+
 
