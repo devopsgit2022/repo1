@@ -1,0 +1,10 @@
+Git
+Linux
+Apache Maven
+Apache Tomcat
+Jenkins
+SonarQube
+Chef & Ansible
+AWS (EC2, VPC, IDM)
+Docker
+Kubernetes

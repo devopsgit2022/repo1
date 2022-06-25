@@ -1,0 +1,27 @@
+Video-1: Explain about Tomcat server
+====================================
+http://192.168.17.1:8080/
+http://localhost:8080/
+
+wget https://downloads.apache.org//tomcat/tomcat-10/v10.0.22/bin/apache-tomcat-10.0.22.tar.gz
+
+tar -xvf zip file
+
+iptables -F -> Blocking firewalls
+
+C:\Users\chiranjeevi\Downloads\apache-tomcat-10.0.22\apache-tomcat-10.0.22\webapps\manager\META-INF
+
+/opt/tomcat/apache-tomcat-10.0.22/webapps/manager/META-INF
+
+modify context.xml file
+
+/opt/tomcat/apache-tomcat-10.0.22/conf
+change user
+
+
+tomcat explain in linux machine also
+
+<tomcat-users>
+<role rolename="manager-gui"/>
+<user username="tomcat" password="tomcat" roles="manager-gui"/>
+</tomcat-users>

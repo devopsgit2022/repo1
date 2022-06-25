@@ -1,0 +1,26 @@
+dnf upgrade -y
+sudo dnf install https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
+sudo dnf install docker-ce -y
+service docker status
+service docker start
+systemctl enable docker
+
+service httpd status
+service http start
+
+systemctl enable http
+
+
+VM-WARE-14
+------------------
+YV54A-2ZW5P-M887Y-UWXNE-QPUXD
+VY3R2-0NW0L-H845Q-TDMXT-XQAT0
+VC7JR-A0Z97-08EGZ-M4YNV-XVHD0
+FC1TU-4RGEQ-084EP-2XQQX-ZGHWA
+CU1WA-8HGEN-M815Z-HQP5E-QKADF
+AY7D0-FTG44-H846Y-2XPGV-P32T8
+
+
+VM-WARE-15
+------------------
+YZ718-4REEQ-08DHQ-JNYQC-ZQRD0

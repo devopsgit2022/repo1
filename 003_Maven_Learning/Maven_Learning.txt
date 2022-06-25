@@ -1,0 +1,228 @@
+Video-1: Explain about JDK and Maven installtion process
+========================================================
+
+windows:
+
+jdk 8 download
+https://www.oracle.com/in/java/technologies/javase/javase8-archive-downloads.html
+java -version
+
+Maven:
+======
+mvn --version
+
+linux:
+yum install java -> nomal process
+
+winscp -> file tranfer/move (windows to linux server)
+
+[root@Server-54 java]# ifconfig
+ens33: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.85.129  netmask 255.255.255.0  broadcast 192.168.85.255
+        inet6 fe80::5f50:5f4e:a8dc:a9b1  prefixlen 64  scopeid 0x20<link>
+
+jdk-13.0.2_linux-x64_bin.tar.gz
+
+tar -xvf jdk-13.0.2_linux-x64_bin.tar.gz
+Path setup:
+
+JAVA
+--------
+vi  /etc/profile.d/java.sh
+export JAVA_HOME=/opt/java/jdk-13.0.2 
+export PATH=${JAVA_HOME}/bin:${PATH}
+source /etc/profile.d/java.sh
+
+
+MAVEN
+-----------
+vi  /etc/profile.d/maven.sh
+export M2_HOME=/opt/maven/apache-maven-3.8.5
+export PATH=${M2_HOME}/bin:${PATH}
+source /etc/profile.d/maven.sh
+sudo yum install java -y
+error:
+source option 1.5 is no longer support user 1.6 0r above
+
+vi pom.xml
+------------------
+
+<maven.compiler.source>1.8</maven.compiler.source>
+  <maven.compiler.target>1.8</maven.compiler.target>
+
+=========================================================
+[root@Server-54 jdk-13.0.2]# java -version
+java version "13.0.2" 2020-01-14
+Java(TM) SE Runtime Environment (build 13.0.2+8)
+Java HotSpot(TM) 64-Bit Server VM (build 13.0.2+8, mixed mode, sharing)
+
+[root@Server-54 maven]# wget https://downloads.apache.org/maven/maven-3/3.8.5/binaries/apache-maven-3.8.5-bin.tar.gz
+
+tar -xvf apache-maven-3.8.5-bin.tar.gz
+
+MAVEN
+-----------
+vi  /etc/profile.d/maven.sh
+export M2_HOME=/opt/maven/apache-maven-3.8.5
+export PATH=${M2_HOME}/bin:${PATH}
+source /etc/profile.d/maven.sh
+sudo yum install java -y
+error:
+source option 1.5 is no longer support user 1.6 0r above
+
+vi pom.xml
+------------------
+
+<maven.compiler.source>1.8</maven.compiler.source>
+<maven.compiler.target>1.8</maven.compiler.target>
+
+======================================
+[root@Server-54 apache-maven-3.8.5]#
+[root@Server-54 apache-maven-3.8.5]# vi  /etc/profile.d/maven.sh
+[root@Server-54 apache-maven-3.8.5]#
+[root@Server-54 apache-maven-3.8.5]#
+[root@Server-54 apache-maven-3.8.5]# mvn
+bash: mvn: command not found...
+[root@Server-54 apache-maven-3.8.5]# source /etc/profile.d/maven.sh
+[root@Server-54 apache-maven-3.8.5]#
+[root@Server-54 apache-maven-3.8.5]#
+[root@Server-54 apache-maven-3.8.5]# mvn
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.143 s
+[INFO] Finished at: 2022-06-04T17:58:27+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] No goals have been specified for this build. You must specify a valid lifecycle phase or a goal in the format <plugin-prefix>:<goal> or <plugin-group-id>:<plugi
+n-artifact-id>[:<plugin-version>]:<goal>. Available lifecycle phases are: validate, initialize, generate-sources, process-sources, generate-resources, process-resources
+, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prep
+are-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy, pre-clean, clean, post-clean, pre-site, site, post-site, s
+ite-deploy. -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/NoGoalSpecifiedException
+[root@Server-54 apache-maven-3.8.5]#
+
+=========================================
+[root@Server-54 apache-maven-3.8.5]# mvn --version
+Apache Maven 3.8.5 (3599d3414f046de2324203b78ddcf9b5e4388aa0)
+Maven home: /opt/maven/apache-maven-3.8.5
+Java version: 13.0.2, vendor: Oracle Corporation, runtime: /opt/java/jdk-13.0.2
+Default locale: en_IN, platform encoding: UTF-8
+OS name: "linux", version: "3.10.0-1127.el7.x86_64", arch: "amd64", family: "unix
+===================================================================
+
+Video-2: Explain about detail about Maven
+========================================================
+Maven and Ant build on same platform -> tomcat
+Maven is one of the build tool or project managment tool
+Build tools:
+Ant, Maven, MS-build, Gradle
+pom.xml -> Project Object Model 
+
+.m2 -> we called it as local repo
+note: if incase .m2 folder removed then try run mvn command on cmd
+
+repo's:
+Maven having 3 repos
+remote repo -> third party repo 
+central repo -> https://repo.maven.apache.org/maven2/
+local repo -> local machine .m2
+cmd -> mvn archetype:generate
+
+3080: remote -> top.ssrsdev:eightroes-webapp-archetype (eightroes-webapp-archetype)
+3081: remote -> tr.com.lucidcode:kite-archetype (A Maven Archetype that allows users to create a Fresh Kite project)
+3082: remote -> tr.com.obss.sdlc.archetype:obss-archetype-java (This archetype provides a common skelton for the Java packages.)
+3083: remote -> tr.com.obss.sdlc.archetype:obss-archetype-webapp (This archetype provides a skelton for the Java Web Application packages.)
+3084: remote -> ua.co.gravy.archetype:single-project-with-junit-and-slf4j (Create a single project with jUnit, Mockito and slf4j dependencies.)
+3085: remote -> uk.ac.ebi.gxa:atlas-archetype (Archetype for generating a custom Atlas webapp)
+3086: remote -> uk.ac.gate:gate-plugin-archetype (Maven archetype to create a new GATE plugin project.)
+3087: remote -> uk.ac.gate:gate-pr-archetype (Maven archetype to create a new GATE plugin project including a sample PR class (an empty LanguageAnalyser).)
+3088: remote -> uk.ac.nactem.argo:argo-analysis-engine-archetype (An archetype which contains a sample Argo (UIMA) Analysis Engine)
+3089: remote -> uk.ac.nactem.argo:argo-reader-archetype (An archetype which contains a sample Argo (UIMA) Reader)
+3090: remote -> uk.ac.rdg.resc:edal-ncwms-based-webapp (-)
+3091: remote -> uk.co.markg.archetypes:java11-junit5 (An archetype for generate java 11 projects with junit 5.)
+3092: remote -> uk.co.nemstix:basic-javaee7-archetype (A basic Java EE7 Maven archetype)
+3093: remote -> uk.co.solong:angular-spring-archetype (So Long archetype for RESTful spring services with an AngularJS frontend. Includes debian deployment)
+3094: remote -> us.fatehi:schemacrawler-archetype-maven-project (-)
+3095: remote -> us.fatehi:schemacrawler-archetype-plugin-command (-)
+3096: remote -> us.fatehi:schemacrawler-archetype-plugin-dbconnector (-)
+3097: remote -> us.fatehi:schemacrawler-archetype-plugin-lint (-)
+3098: remote -> ws.osiris:osiris-archetype (Maven Archetype for Osiris)
+3099: remote -> xyz.luan.generator:xyz-gae-generator (-)
+3100: remote -> xyz.luan.generator:xyz-generator (-)
+3101: remote -> za.co.absa.hyperdrive:component-archetype (-)
+3102: remote -> za.co.absa.hyperdrive:component-archetype_2.11 (-)
+3103: remote -> za.co.absa.hyperdrive:component-archetype_2.12 (-)
+Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): 1914:
+
+mvn archetype:generate > mvn.out    <- complete copied projects numbers
+maven - > goals, lifecycle, build phases
+
+
+Video-3: Explain about detail about Maven lifecycle/phases/goals
+================================================================
+
+.m2 in linux machine:
+
+[root@Server-54 ~]# cd /root/
+[root@Server-54 ~]#
+[root@Server-54 ~]# pwd
+/root
+[root@Server-54 ~]#
+[root@Server-54 ~]# ll
+total 8
+-rw-------. 1 root root 1481 May  1 12:36 anaconda-ks.cfg
+-rw-r--r--. 1 root root 1529 May  1 12:44 initial-setup-ks.cfg
+[root@Server-54 ~]# ls -la
+total 32
+dr-xr-x---.  6 root root  216 Jun  4 17:58 .
+dr-xr-xr-x. 17 root root  224 May  1 12:35 ..
+-rw-------.  1 root root 1481 May  1 12:36 anaconda-ks.cfg
+-rw-------.  1 root root 2154 Jun  4 18:04 .bash_history
+-rw-r--r--.  1 root root   18 Dec 29  2013 .bash_logout
+-rw-r--r--.  1 root root  176 Dec 29  2013 .bash_profile
+-rw-r--r--.  1 root root  176 Dec 29  2013 .bashrc
+drwx------.  4 root root   31 May  1 12:54 .cache
+drwx------.  4 root root   30 May  1 12:54 .config
+-rw-r--r--.  1 root root  100 Dec 29  2013 .cshrc
+drwx------.  3 root root   25 May  1 12:42 .dbus
+-rw-r--r--.  1 root root 1529 May  1 12:44 initial-setup-ks.cfg
+drwxr-xr-x.  3 root root   24 Jun  4 17:58 .m2
+-rw-r--r--.  1 root root  129 Dec 29  2013 .tcshrc
+[root@Server-54 ~]# cd .m2/
+[root@Server-54 .m2]# ll
+total 0
+drwxr-xr-x. 2 root root 6 Jun  4 17:58 repository
+[root@Server-54 .m2]# cd repository/
+[root@Server-54 repository]# ll
+
+
+1.0-SNAPSHOT -> current implemenation
+
+Needs to understand below details
+<groupId>project-devops1</groupId>
+
+<artifactId>devops.project.com</artifactId>
+
+<version>1.0-SNAPSHOT</version>
+
+<packaging>pom</packaging>
+
+<name>devops (master)</name>
+===============================================
+mvn validate
+mvn test
+mvn compile
+mvn package
+mvn clean
+
+total 23 goals
+
+
+
+
